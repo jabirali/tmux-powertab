@@ -14,7 +14,7 @@ right corner of the setup shows the current hostname and session name.
 
 To install this plugin with [`tpm`][1], add this to your `tmux.conf`:
 
-	set -g @plugin 'tmux-plugins/tpm'
+	set -g @plugin 'jabirali/tmux-soltab'
 
 [1]: https://github.com/tmux-plugins/tpm
 
