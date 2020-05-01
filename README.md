@@ -1,7 +1,7 @@
 # Tmux Soltab
 
-There isn't that much to say about this plugin. It's a Solarized Light theme
-for `tmux`, which has a status line that looks more like traditional GUI tabs:
+There isn't that much to say. It's a Solarized Light theme for `tmux`,
+with a status line that looks like traditional GUI tabs:
 
 ![screenshot](screenshot.png)
 
