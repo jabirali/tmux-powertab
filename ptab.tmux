@@ -1,10 +1,10 @@
 #!/bin/sh
 # Tmux tab coloring
-    COLOR1='default' #'#fdf6e3'
-    COLOR2='default' #'#363636'
-    COLOR3='default' #'#1d1d1d'
+    COLOR1='#fdf6e3' #'default'
+    COLOR2='#363636' #'default'
+    COLOR3='#1d1d1d' #'default'
     COLOR4='default' #'default'
-    COLOR5='default' #'#657b83'
+    COLOR5='#657b83' #'default'
     
 	# Powerline tabs.
 tmux set -g @tab_0l "#[fg=$COLOR1,bg=$COLOR2]"
