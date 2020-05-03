@@ -1,10 +1,18 @@
 #!/bin/sh
 # Tmux tab coloring
-    COLOR1='#fdf6e3' # background color
-    COLOR2='#363636' # top right statusline bg
-    COLOR3='#1d1d1d' # top statusline bg
+    # Ubuntu
+    COLOR1='#500f3b' # background color
+    COLOR2='#360b28' # bg of unselected tabs
+    COLOR3='#300a24' # top statusline bg
     COLOR4='default' # terminal bg color?
-    COLOR5='#657b83' # text color (fg)
+    COLOR5='#eeeeec' # text color (fg)
+
+    # Solarized light
+    # COLOR1='#fdf6e3' # background color
+    # COLOR2='#363636' # top right statusline bg
+    # COLOR3='#1d1d1d' # top statusline bg
+    # COLOR4='default' # terminal bg color?
+    # COLOR5='#657b83' # text color (fg)
     
 	# Powerline tabs.
 tmux set -g @tab_0l "#[fg=$COLOR1,bg=$COLOR2]"
