@@ -1,31 +1,80 @@
 #!/bin/sh
+# Tmux tab coloring
+    
+    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder 
+    do
+        export "$option"="$(tmux show-option -gv @soltab-$option 2>&1)"
+    done
+    if [ -z "$foreground" ]
+    then
+        foreground='#657b83'
+    fi
+    if [ -z "$background" ]
+    then
+        background='#fdf6e3'
+    fi
+    if [ -z "$statusline" ]
+    then
+        statusline='#1d1d1d'
+    fi
+    if [ -z "$unfocustab_bg" ]
+    then
+        unfocustab_bg='#363636'
+    fi
+    if [ -z "$unfocustab_fg" ]
+    then
+        unfocustab_fg="$background"
+    fi
+    if [ -z "$focustab_fg" ]
+    then
+        focustab_fg="$unfocustab_bg"
+    fi
+    if [ -z "$statuslineright_bg" ]
+    then
+        statuslineright_bg="$unfocustab_bg"
+    fi
+    if [ -z "$statuslineright_fg" ]
+    then
+        statuslineright_fg="$unfocustab_fg"
+    fi
+    if [ -z "$paneborder" ]
+    then
+        paneborder="$background"
+    fi
+    if [ -z "$activepaneborder" ]
+    then
+        activepaneborder="$foreground"
+    fi
 
-# Tab colors.
-tmux set -g @soltab0 '#[fg=#fdf6e3,bg=#363636]'
-tmux set -g @soltab1 '#[bg=#363636,fg=#fdf6e3]'
-tmux set -g @soltab2 '#[bg=#fdf6e3,fg=#1d1d1d]'
+	# Powerline tabs.
+tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
+tmux set -g @tab_0r "#[bg=$COLOR4,fg=$COLOR2]" #purpose unclear
+tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
+tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]"
+tmux set -g @tab_2l "#[bg=$statusline,fg=$background]#[bg=$background,fg=$focustab_fg]"
+tmux set -g @tab_2r "#[bg=$statusline,fg=$background]"
 
-# Statusline (general).
+	# # Statusline (general).
 tmux set -g status-position top
 tmux set -g status-justify left
-tmux set-option -g status-style "bg=#1d1d1d"
+tmux set-option -g status-style "bg=$statusline"
 
-# Statusline (left).
+	# # Statusline (left).
 tmux set -g status-left " "
 
-# Statusline (right).
+	# # Statusline (right).
 tmux set -g status-right-length 24
-tmux set -g status-right "#{@soltab0} #H: #S "
+tmux set -g status-right "#{@tab_0l} #H#{?#{==:#S,0},,: #S} #{@tab_0r}"
 
-# Statusline (center).
+	# # Statusline (center).
 tmux setw -g window-status-separator ""
-tmux set -g window-status-format "#{@soltab1}  #I #W  "
-tmux set -g window-status-current-format "#{@soltab2}  #I #W  "
+tmux set -g window-status-format "#{@tab_1l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_1r}"
+tmux set -g window-status-current-format "#{@tab_2l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_2r}"
 
-# Pane borders.
-tmux set -g pane-border-style 'fg=#1d1d1d,bg=#fdf6e3' 
-tmux set -g pane-active-border-style 'fg=#1d1d1d,bg=#fdf6e3'
+	# Pane borders.
+tmux set -g pane-border-style "fg=$paneborder,bg=$background" 
+tmux set -g pane-active-border-style "fg=$activepaneborder,bg=$background"
 
-# Pane contents.
-tmux set -g window-style 'fg=#657b83,bg=#fdf6e3'
-tmux set -g window-active-style 'fg=#657b83,bg=#fdf6e3'
+	# Pane contents.
+tmux set -g window-style "fg=$foreground,bg=$background"
+tmux set -g window-active-style "fg=$foreground,bg=$background"
