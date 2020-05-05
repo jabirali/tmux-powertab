@@ -1,25 +1,25 @@
 #!/bin/sh
 # Tmux tab coloring
     
-    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_bg statuslineright_fg paneborder activepaneborder 
+    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder 
     do
-        export "$option"="$(tmux show-option -gv @ptab-$option 2>&1)"
+        export "$option"="$(tmux show-option -gv @soltab-$option 2>&1)"
     done
     if [ -z "$foreground" ]
     then
-        foreground='#eeeeec'
+        foreground='#657b83'
     fi
     if [ -z "$background" ]
     then
-        background='#300a24'
+        background='#fdf6e3'
     fi
     if [ -z "$statusline" ]
     then
-        statusline='#300a24'
+        statusline='#1d1d1d'
     fi
     if [ -z "$unfocustab_bg" ]
     then
-        unfocustab_bg='#eeeeec'
+        unfocustab_bg='#363636'
     fi
     if [ -z "$unfocustab_fg" ]
     then
@@ -46,20 +46,6 @@
         activepaneborder="$foreground"
     fi
 
-    # Ubuntu
-    # COLOR1='#300a24' # background color
-    # COLOR2='#eeeeec' # bg of unselected tabs
-    # COLOR3='#300a24' # top statusline bg
-    # COLOR4='default' # terminal bg color?
-    # COLOR5='#eeeeec' # text color (fg)
-
-    # Solarized light
-    # COLOR1='#fdf6e3' # background color
-    # COLOR2='#363636' # top right statusline bg
-    # COLOR3='#1d1d1d' # top statusline bg
-    # COLOR4='default' # terminal bg color?
-    # COLOR5='#657b83' # text color (fg)
-    
 	# Powerline tabs.
 tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
 tmux set -g @tab_0r "#[bg=$COLOR4,fg=$COLOR2]" #purpose unclear
