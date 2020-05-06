@@ -48,7 +48,6 @@
 
 	# Powerline tabs.
 tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
-tmux set -g @tab_0r "#[bg=$COLOR4,fg=$COLOR2]" #purpose unclear
 tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
 tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]"
 tmux set -g @tab_2l "#[bg=$statusline,fg=$background]#[bg=$background,fg=$focustab_fg]"
@@ -64,7 +63,7 @@ tmux set -g status-left " "
 
 	# # Statusline (right).
 tmux set -g status-right-length 24
-tmux set -g status-right "#{@tab_0l} #H#{?#{==:#S,0},,: #S} #{@tab_0r}"
+tmux set -g status-right "#{@tab_0l} #H#{?#{==:#S,0},,: #S} "
 
 	# # Statusline (center).
 tmux setw -g window-status-separator ""
