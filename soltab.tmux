@@ -1,7 +1,9 @@
 #!/bin/sh
 # Tmux tab coloring
-    
-    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder 
+
+    powerline_l=''
+    powerline_r=''
+    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder powerline
     do
         export "$option"="$(tmux show-option -gv @soltab-$option 2>&1)"
     done
@@ -45,13 +47,18 @@
     then
         activepaneborder="$foreground"
     fi
+    if [ $powerline = 'on' ]
+    then
+        powerline_l=""
+        powerline_r=""
+    fi
 
 	# Powerline tabs.
 tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
-tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
-tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]"
-tmux set -g @tab_2l "#[bg=$statusline,fg=$background]#[bg=$background,fg=$focustab_fg]"
-tmux set -g @tab_2r "#[bg=$statusline,fg=$background]"
+tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]$powerline_l#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
+tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
+tmux set -g @tab_2l "#[bg=$statusline,fg=$background]$powerline_l#[bg=$background,fg=$focustab_fg]"
+tmux set -g @tab_2r "#[bg=$statusline,fg=$background]$powerline_r"
 
 	# # Statusline (general).
 tmux set -g status-position top

@@ -31,6 +31,12 @@ You can assign colors to all of the above attributes. If you'd prefer, though,
 you can just set colors for 'foreground', 'background', 'statusline', and 'unfocustab_bg'.
 The rest of the colors will default to be the same as one of the ones you've set. 
 
+To add the powerline tab edges as shown in the picture, add this to your `tmux.conf`:
+
+    set -g @soltab-powerline 'on'
+
+Without this option, the tabs will have squared corners
+
 To install this plugin with [`tpm`][1], add this to your `tmux.conf`:
 
 	set -g @plugin 'jabirali/tmux-soltab'
