@@ -37,6 +37,14 @@ To add the powerline tab edges as shown in the picture, add this to your `tmux.c
 
 Without this option, the tabs will have squared corners
 
+If you want a different color for your activepaneborder to be automatically assigned so you
+don't have to pick a certain color, add this to your `tmux.conf`:
+
+    set -g @soltab-activeborder 'on'
+
+Without this option, active and inactive panes will have the same border color (unless you 
+manually assign it a color).
+
 To install this plugin with [`tpm`][1], add this to your `tmux.conf`:
 
 	set -g @plugin 'jabirali/tmux-soltab'

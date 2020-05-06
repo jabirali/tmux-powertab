@@ -3,7 +3,7 @@
 
     powerline_l=''
     powerline_r=''
-    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder powerline
+    for option in foreground background statusline unfocustab_bg unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activepaneborder powerline activeborder
     do
         export "$option"="$(tmux show-option -gv @soltab-$option 2>&1)"
     done
@@ -45,7 +45,12 @@
     fi
     if [ -z "$activepaneborder" ]
     then
-        activepaneborder="$foreground"
+        if [ $activeborder = 'on' ]
+        then
+            activepaneborder="$foreground"
+        else
+            activepaneborder="$paneborder"
+        fi
     fi
     if [ $powerline = 'on' ]
     then
