@@ -6,7 +6,6 @@
 	# `set -g @soltab-key val` in their tmux.conf to set `key` to `val`.
 	options="
 		powerline
-		activeborder
 		foreground
 		background
 		statusline
@@ -64,18 +63,31 @@
 	then
 		statuslineright_fg="$unfocustab_fg"
 	fi
+	
+	# There are several different uses for the `paneborder` setting. Normally,
+	# all borders have the same color, either the statusline color (default),
+	# foreground (`fg`), or background (`bg`). However, you can set this to
+	# `auto` to switch between `fg` and `bg` colors depending on pane activity,
+	# or you can set `paneborder` and `activepaneborder` to colors manually;
+	# these colors will then not be modified by the if-else structure below.
 	if [ -z "$paneborder" ]
 	then
-		paneborder="$background"
-	fi
-	if [ -z "$activepaneborder" ]
+		# Default: Pane borders match statusline.
+		paneborder="$statusline"
+		activepaneborder="$statusline"
+	elif [ "$paneborder" = 'fg' ]
 	then
-		if [ "$activeborder" = 'on' ]
-		then
-			activepaneborder="$foreground"
-		else
-			activepaneborder="$paneborder"
-		fi
+		# Option: Pane border match foreground.
+		paneborder="$foreground"
+		activepaneborder="$foreground"
+	elif [ "$paneborder" = 'bg' ]
+	then
+		paneborder="$background"
+		activepaneborder="$background"
+	elif [ "$paneborder" = 'auto' ]
+	then
+		paneborder="$background"
+		activepaneborder="$foreground"
 	fi
 # }}}
 
