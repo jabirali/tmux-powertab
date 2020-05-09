@@ -3,7 +3,7 @@
 
 # Config options {{{
 	# Define a list of config options that can be set by the user, using
-	# `set -g @soltab-key val` in their tmux.conf to set `key` to `val`.
+	# `set -g @powertab-key val` in their tmux.conf to set `key` to `val`.
 	options="
 		powerline
 		pathname
@@ -22,7 +22,7 @@
 	# Import these config options from `tmux` to `sh`.
 	for option in $options
 	do
-		export "$option"="$(tmux show-option -gv @soltab-$option 2>&1)"
+		export "$option"="$(tmux show-option -gv @powertab-$option 2>&1)"
 	done
 # }}}
 

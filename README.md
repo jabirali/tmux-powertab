@@ -1,4 +1,4 @@
-# Tmux Soltab
+# Tmux Powertab
 
 There isn't that much to say. It's a Solarized Light theme for `tmux`,
 with a status line that looks like traditional GUI tabs:
@@ -22,7 +22,7 @@ unfocustab_fg focustab_fg statuslineright_bg statuslineright_fg paneborder activ
 
 To modify these colors, add something like this to your `tmux.conf`:
 
-    set -g @soltab-foreground '#1d1d1d'
+    set -g @powertab-foreground '#1d1d1d'
 
 The argument should be a hexadecimal color value. Replace the word 'foreground' in the 
 example above with any of the other attributes you'd like to customize. 
@@ -33,21 +33,21 @@ The rest of the colors will default to be the same as one of the ones you've set
 
 To add the powerline tab edges as shown in the picture, add this to your `tmux.conf`:
 
-    set -g @soltab-powerline 'on'
+    set -g @powertab-powerline 'on'
 
 Without this option, the tabs will have squared corners
 
 If you want a different color for your activepaneborder to be automatically assigned so you
 don't have to pick a certain color, add this to your `tmux.conf`:
 
-    set -g @soltab-activeborder 'on'
+    set -g @powertab-activeborder 'on'
 
 Without this option, active and inactive panes will have the same border color (unless you 
 manually assign it a color).
 
 To install this plugin with [`tpm`][1], add this to your `tmux.conf`:
 
-	set -g @plugin 'jabirali/tmux-soltab'
+	set -g @plugin 'jabirali/tmux-powertab'
 
 [1]: https://github.com/tmux-plugins/tpm
 
