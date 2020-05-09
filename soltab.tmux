@@ -45,14 +45,14 @@
     fi
     if [ -z "$activepaneborder" ]
     then
-        if [ $activeborder = 'on' ]
+        if [ "$activeborder" = 'on' ]
         then
             activepaneborder="$foreground"
         else
             activepaneborder="$paneborder"
         fi
     fi
-    if [ $powerline = 'on' ]
+    if [ "$powerline" = 'on' ]
     then
         powerline_l=""
         powerline_r=""
@@ -65,19 +65,19 @@ tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
 tmux set -g @tab_2l "#[bg=$statusline,fg=$background]$powerline_l#[bg=$background,fg=$focustab_fg]"
 tmux set -g @tab_2r "#[bg=$statusline,fg=$background]$powerline_r"
 
-	# # Statusline (general).
+	# Statusline (general).
 tmux set -g status-position top
 tmux set -g status-justify left
 tmux set-option -g status-style "bg=$statusline"
 
-	# # Statusline (left).
+	# Statusline (left).
 tmux set -g status-left " "
 
-	# # Statusline (right).
+	# Statusline (right).
 tmux set -g status-right-length 24
 tmux set -g status-right "#{@tab_0l} #H#{?#{==:#S,0},,: #S} "
 
-	# # Statusline (center).
+	# Statusline (center).
 tmux setw -g window-status-separator ""
 tmux set -g window-status-format "#{@tab_1l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_1r}"
 tmux set -g window-status-current-format "#{@tab_2l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_2r}"
