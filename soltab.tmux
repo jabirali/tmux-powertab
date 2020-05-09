@@ -6,6 +6,7 @@
 	# `set -g @soltab-key val` in their tmux.conf to set `key` to `val`.
 	options="
 		powerline
+		pathname
 		foreground
 		background
 		statusline
@@ -103,7 +104,15 @@
 		powerline_r=''
 	fi
 	
-	# Prepare variables with the tab design.
+	# Check whether to autorename tabs. You probably want to keep this 
+	if [ "$pathname" = 'on' ]
+	then
+		tabname="#{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}}"
+	else
+		tabname="#W"
+	fi
+	
+	# Prepare tab design variables.
 	tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
 	tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]$powerline_l#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
 	tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
@@ -126,8 +135,8 @@
 	
 	# Statusline (center).
 	tmux setw -g window-status-separator ""
-	tmux set -g window-status-format "#{@tab_1l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_1r}"
-	tmux set -g window-status-current-format "#{@tab_2l} #I #{?#{==:#{pane_current_path},$HOME},#W,#{b:pane_current_path}} #{@tab_2r}"
+	tmux set -g window-status-format "#{@tab_1l} #I $tabname #{@tab_1r}"
+	tmux set -g window-status-current-format "#{@tab_2l} #I $tabname #{@tab_2r}"
 	
 	# Pane borders.
 	tmux set -g pane-border-style "fg=$paneborder,bg=$background"
