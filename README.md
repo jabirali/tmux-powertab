@@ -1,9 +1,8 @@
 # Tmux Powertab
 
-This is a `tmux` theme that attempts to recreate the look and feel of GUI tabs
-via a powerline-powered statusline. By default, it uses the Solarized Light
-colors; but all colors can be configured, and the powerline symbols are optional.
-This is what the setup looks like by default:
+This is a `tmux` theme that recreates the look and feel of GUI tabs via powerline 
+symbols. By default, it uses the Solarized Light colors; but all colors can be
+configured, and the powerline symbols are optional. This is what it looks like:
 
 ![screenshot](screenshot.png)
 
@@ -23,7 +22,6 @@ corner of the setup shows the current hostname and session name.
 By default, the powerline symbols are disabled. This is because they require that you use 
 a [patched font][2], and that they require Unicode support that may not work on old hosts.
 However, when properly setup, the tab line arguably looks much better with these enabled.
-
 To add the powerline tab edges as shown in the screenshot, add this to your `tmux.conf`:
 
 	set -g @powertab-powerline 'on'
@@ -31,7 +29,7 @@ To add the powerline tab edges as shown in the screenshot, add this to your `tmu
 # Path names
 
 In `tmux`, you can manually rename a tab using the keybinding <kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>,</kbd>.
-However, not everyone likes to do this, in which case automatic tab renaming may be your thing.
+However, not everyone likes to do this, in which case this plugin can help you automatically rename tabs.
 The way it works, is that it lets `tmux` name a tab based on the running process if you're in your
 home folder, as is likely to be the case for system monitors, music players, mail clients, etc.
 However, once you `cd` to some other folder (e.g. a project you're working on), that is used as
