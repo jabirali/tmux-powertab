@@ -113,11 +113,11 @@
 	fi
 	
 	# Prepare tab design variables.
-	tmux set -g @tab_0l "#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
-	tmux set -g @tab_1l "#[bg=$statusline,fg=$unfocustab_bg]$powerline_l#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
-	tmux set -g @tab_1r "#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
-	tmux set -g @tab_2l "#[bg=$statusline,fg=$background]$powerline_l#[bg=$background,fg=$focustab_fg]"
-	tmux set -g @tab_2r "#[bg=$statusline,fg=$background]$powerline_r"
+	tab_0l="#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
+	tab_1l="#[bg=$statusline,fg=$unfocustab_bg]$powerline_l#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
+	tab_1r="#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
+	tab_2l="#[bg=$statusline,fg=$background]$powerline_l#[bg=$background,fg=$focustab_fg]"
+	tab_2r="#[bg=$statusline,fg=$background]$powerline_r"
 # }}}
 
 # Tmux settings {{{
@@ -131,12 +131,12 @@
 	
 	# Statusline (right).
 	tmux set -g status-right-length 24
-	tmux set -g status-right "#{@tab_0l} #H#{?#{==:#S,0},,: #S} "
+	tmux set -g status-right "$tab_0l #H#{?#{==:#S,0},,: #S} "
 	
 	# Statusline (center).
 	tmux setw -g window-status-separator ""
-	tmux set -g window-status-format "#{@tab_1l} #I $tabname #{@tab_1r}"
-	tmux set -g window-status-current-format "#{@tab_2l} #I $tabname #{@tab_2r}"
+	tmux set -g window-status-format "$tab_1l #I $tabname $tab_1r"
+	tmux set -g window-status-current-format "$tab_2l #I $tabname $tab_2r"
 	
 	# Pane borders.
 	tmux set -g pane-border-style "fg=$paneborder,bg=$background"
