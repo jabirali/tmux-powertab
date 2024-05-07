@@ -13,6 +13,7 @@
 		unfocustab_bg
 		unfocustab_fg
 		focustab_fg
+		focustab_bg
 		statuslineright_bg
 		statuslineright_fg
 		paneborder
@@ -51,6 +52,10 @@
 	if [ -z "$unfocustab_fg" ]
 	then
 		unfocustab_fg="$background"
+	fi
+	if [ -z "$focustab_bg" ]
+	then
+		focustab_bg="$background"
 	fi
 	if [ -z "$focustab_fg" ]
 	then
@@ -116,8 +121,8 @@
 	tab_0l="#[fg=$statuslineright_fg,bg=$statuslineright_bg]"
 	tab_1l="#[bg=$statusline,fg=$unfocustab_bg]$powerline_l#[bg=$unfocustab_bg,fg=$unfocustab_fg]"
 	tab_1r="#[bg=$statusline,fg=$unfocustab_bg]$powerline_r"
-	tab_2l="#[bg=$statusline,fg=$background]$powerline_l#[bg=$background,fg=$focustab_fg]"
-	tab_2r="#[bg=$statusline,fg=$background]$powerline_r"
+	tab_2l="#[bg=$statusline,fg=$focustab_bg]$powerline_l#[bg=$focustab_bg,fg=$focustab_fg]"
+	tab_2r="#[bg=$statusline,fg=$focustab_bg]$powerline_r"
 # }}}
 
 # Tmux settings {{{
